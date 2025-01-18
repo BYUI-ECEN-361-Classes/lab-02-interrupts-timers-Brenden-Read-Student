@@ -68,9 +68,17 @@ void got_start()
 
 	  /**************** STUDENT TO FILL IN START HERE ********************/
 		// Step 1
+		MultiFunctionShield_Display("----");
 		// Step 2
+//		uint32_t start_time = HAL_GetTick();  // Get current time
+//		    while (HAL_GetTick() - start_time < rand_millisec) {
+//		       }
+		HAL_Delay(rand_millisec);
 		// Step 3
+		MultiFunctionShield_Display("GO");
 		// Step 4
+		HAL_TIM_Base_Start(&htim3);
+
 	  /**************** STUDENT TO FILL IN END  HERE ********************/
 	}
 void got_stop()
@@ -86,12 +94,12 @@ void got_stop()
 
 	  /**************** STUDENT TO FILL IN START HERE ********************/
       // 1.) Stop the random timer // Random timer is timer3
-
+		HAL_TIM_Base_Stop(&htim3);
       // 2.) Read the value of the timer -- this step provided
 		last_reaction_time_in_millisec = __HAL_TIM_GetCounter(&htim3) / 10; // Why is it divide by 10?
 
 	  // 3.) Display the value
-
+		MultiFunctionShield_Display(&htim3);
 
       /**************** STUDENT TO FILL IN END HERE ********************/
 		// Keep the best time in a global variable
